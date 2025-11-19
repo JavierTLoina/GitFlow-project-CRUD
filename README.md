@@ -9,7 +9,7 @@ El desarrollo se ha basado en la metodología **Git Flow**, utilizando las sigui
 - **`main`**: Rama de producción estable.
 - **`develop`**: Rama de integración principal para el desarrollo continuo.
 - **`qa`**: Rama de Calidad/Staging para pruebas antes de producción.
-- **`feature/**` Ramas de corta duración para nuevas funcionalidades y correcciones.
+- **`feature`/** Ramas de corta duración para nuevas funcionalidades y correcciones.
 
 ## Estructura de Features
 
