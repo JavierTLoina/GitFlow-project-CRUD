@@ -1,6 +1,9 @@
-# Proyecto CRUD con Git Flow Riguroso
+# 2024-0172 Mi Proyecto con Git Flow
 
 Este repositorio contiene la implementación de una aplicación CRUD (Crear, Leer, Actualizar, Borrar) desarrollada para demostrar un manejo estricto y riguroso del flujo de trabajo Git Flow.
+
+## Tecnologia Utilizada
+- **`React + TS + SCSS + Vite`**
 
 ## Metodología Implementada
 
