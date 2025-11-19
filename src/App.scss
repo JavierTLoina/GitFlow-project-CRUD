@@ -1,42 +1,151 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+:root {
+	--bg: #0f1724; /* deep navy */
+	--card: #0b1220;
+	--muted: #98a0b3;
+	--text: #e6eef8;
+	--accent: #5dd6ff; /* soft cyan */
+	--accent-2: #7c5cff; /* violet */
+	--danger: #ff6b6b;
+	--surface-elev: rgba(255,255,255,0.02);
+	--glass-border: rgba(255,255,255,0.04);
+	--radius: 10px;
+	--max-width: 980px;
+	--gap: 1rem;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Container / layout */
+.container {
+	max-width: var(--max-width);
+	margin: auto; 
+	padding: 2rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	color: var(--text);
+	background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+	border-radius: calc(var(--radius) + 2px);
+	box-shadow: 0 6px 30px rgba(2,6,23,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+	border: 1px solid var(--glass-border);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+h1 {
+	margin: 0 0 0.5rem 0;
+	font-size: 1.8rem;
+	font-weight: 700;
+	letter-spacing: -0.02em;
+	color: var(--text);
 }
-
-.card {
-  padding: 2em;
+h2 {
+	margin-top: 1.25rem;
+	margin-bottom: 0.6rem;
+	font-size: 1.05rem;
+	color: var(--muted);
 }
 
 .read-the-docs {
-  color: #888;
+	color: var(--muted);
+	margin-top: 1.6rem;
+	font-size: 0.92rem;
 }
+
+form {
+	display: flex;
+	gap: 0.75rem;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 1rem;
+}
+
+input[type="text"],
+input[type="email"] {
+	flex: 1 1 200px;
+	min-width: 180px;
+	padding: 0.7rem 0.9rem;
+	border-radius: 8px;
+	border: 1px solid var(--glass-border);
+	background: rgba(255,255,255,0.02);
+	color: var(--text);
+	transition: box-shadow 160ms, transform 120ms, border-color 160ms;
+}
+input::placeholder { color: rgba(255,255,255,0.35); }
+input:focus {
+	outline: none;
+	box-shadow: 0 4px 18px rgba(92,89,255,0.07);
+	border-color: rgba(124,92,255,0.6);
+	transform: translateY(-1px);
+}
+
+button {
+	border-radius: 8px;
+	padding: 0.6rem 0.9rem;
+	font-weight: 600;
+	color: var(--bg);
+	background: linear-gradient(180deg, var(--accent-2), #5b47ff);
+	border: none;
+	cursor: pointer;
+	transition: transform 120ms ease, box-shadow 120ms ease, opacity 120ms;
+}
+button:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(92,89,255,0.18); }
+
+button[disabled] { opacity: 0.5; cursor: not-allowed; }
+.delete-button {
+	background: linear-gradient(180deg, #ff6b6b, #ff3b3b);
+	color: white;
+	margin-left: 0.5rem;
+}
+
+table {
+	width: min(100%, 920px);
+	border-collapse: collapse;
+	margin-top: 0.6rem;
+	margin-left: auto;
+	margin-right: auto;
+	background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 0 6px 20px rgba(2,6,23,0.45);
+}
+thead tr {
+	background: rgba(255,255,255,0.02);
+}
+
+th, td {
+	padding: 0.9rem 0.8rem;
+	text-align: center;
+	font-size: 0.95rem;
+	color: var(--text);
+	border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+tbody tr:nth-child(even) { background: rgba(255,255,255,0.01); }
+tbody tr:hover { background: rgba(255,255,255,0.02); }
+
+.actions {
+	display: flex; gap: 0.5rem; align-items: center; justify-content: center;
+}
+
+@media (max-width: 720px) {
+	.container { padding: 1rem; margin: 1rem; }
+	form { flex-direction: column; align-items: stretch; }
+	input { width: 100%; }
+	th, td { padding: 0.6rem 0.5rem; }
+}
+
+@media (prefers-color-scheme: light) {
+	:root {
+		--bg: #f7fafc;
+		--card: #ffffff;
+		--muted: #6b7280;
+		--text: #0f1724;
+		--accent: #0ea5a4;
+		--accent-2: #6366f1;
+		--danger: #dc2626;
+		--surface-elev: rgba(2,6,23,0.02);
+		--glass-border: rgba(2,6,23,0.06);
+	}
+	.container { box-shadow: 0 8px 30px rgba(2,6,23,0.06); }
+	button { color: white; }
+}
+
+.card { padding: 2em; }

@@ -106,7 +106,7 @@ function App() {
       {/* ----------------------------- */}
 
       <p className="read-the-docs">
-        La funcionalidad de Borrado (D) ha sido implementada, completando el CRUD.
+        Developed by JaviDB - Para practica Git Flow ITLA
       </p>
     </div>
   );
