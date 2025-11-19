@@ -23,3 +23,24 @@ El proyecto se construyó a través de la integración de 5 Features principales
 3.  **Feature 3:** `feature/read-user-list` (Implementación de la función R - Leer)
 4.  **Feature 4:** `feature/update-user-status` (Implementación de la función U - Actualizar)
 5.  **Feature 5:** `feature/delete-user-record` (Implementación de la función D - Borrar)
+
+6.  ## Cómo Ejecutar el Proyecto
+
+Para clonar y correr el proyecto en tu máquina local, sigue estos pasos:
+
+1.  **Clonar el Repositorio:**
+    ```bash
+    git clone [https://github.com/JavierTLoina/GitFlow-project-CRUD.git](https://github.com/JavierTLoina/GitFlow-project-CRUD.git)
+    cd GitFlow-project-CRUD
+    ```
+
+2.  **Instalar Dependencias:**
+    ```bash
+    npm install
+    ```
+
+3.  **Iniciar el Servidor de Desarrollo:**
+    ```bash
+    npm run dev
+    ```
+    La aplicación estará disponible en la URL que se muestre en tu terminal (ej: `http://localhost:5173/`).
