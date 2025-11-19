@@ -36,11 +36,18 @@ function App() {
       )
     );
   };
+  
+  const handleDeleteUser = (id: number) => {
+    if (window.confirm("¿Estás seguro de que quieres eliminar este usuario? ¡Esta acción es permanente!")) {
+        setUsers(users.filter((user) => user.id !== id));
+    }
+  };
+
 
   return (
     <div className="container">
       <h1>CRUD de Usuarios con Git Flow (React/TS)</h1>
-      
+
       {}
       <h2>Añadir Nuevo Usuario</h2>
       <form onSubmit={handleAddUser}>
@@ -60,11 +67,10 @@ function App() {
         />
         <button type="submit">Crear Usuario</button>
       </form>
-      {/* ------------------------------------------- */}
       
       <p>Total de usuarios cargados: **{users.length}** registros.</p>
 
-      {/* --- Lista de Usuarios (R) con Botón (U) --- */}
+      {/* --- TABLA (R) con Botones (U y D) --- */}
       <h2>Lista de Usuarios</h2>
       <table>
         <thead>
@@ -80,14 +86,18 @@ function App() {
               <td>{user.email}</td>
               <td>{user.is_active ? 'Activo' : 'Inactivo'}</td>
               <td>
-                {/* Botón de Actualización (U) */}
                 <button 
                   onClick={() => handleToggleStatus(user.id)}
                   title="Cambia el estado de activo a inactivo y viceversa"
                 >
                   {user.is_active ? 'Desactivar' : 'Activar'}
                 </button>
-                <button disabled>Eliminar</button>
+                <button 
+                  onClick={() => handleDeleteUser(user.id)} 
+                  className="delete-button"
+                >
+                  Eliminar
+                </button>
               </td>
             </tr>
           ))}
@@ -96,7 +106,7 @@ function App() {
       {/* ----------------------------- */}
 
       <p className="read-the-docs">
-        La funcionalidad de Actualización (U) del estado ha sido implementada.
+        La funcionalidad de Borrado (D) ha sido implementada, completando el CRUD.
       </p>
     </div>
   );
