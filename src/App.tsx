@@ -1,35 +1,91 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import { type User } from './types';
+import './App.scss'; 
+
+const initialUsers: User[] = [
+  { id: 1, name: "Alice Johnson", email: "alice@example.com", is_active: true },
+  { id: 2, name: "Bob Smith", email: "bob@example.com", is_active: false },
+];
+
+let nextId = 3; 
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [users, setUsers] = useState<User[]>(initialUsers);
+  const [newUser, setNewUser] = useState({ name: '', email: '' }); 
+
+  const handleAddUser = (e: React.FormEvent) => {
+    e.preventDefault(); 
+
+    if (!newUser.name.trim() || !newUser.email.trim()) {
+        alert("Por favor, rellena todos los campos.");
+        return;
+    }
+
+    const userToAdd: User = {
+      id: nextId++, 
+      name: newUser.name.trim(),
+      email: newUser.email.trim(),
+      is_active: true, 
+    };
+    setUsers([...users, userToAdd]); 
+    setNewUser({ name: '', email: '' }); 
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
+    <div className="container">
+      <h1>CRUD de Usuarios con Git Flow (React/TS)</h1>
+      
+      {}
+      <h2>Añadir Nuevo Usuario</h2>
+      <form onSubmit={handleAddUser}>
+        <input 
+          type="text" 
+          placeholder="Nombre" 
+          value={newUser.name} 
+          onChange={(e) => setNewUser({...newUser, name: e.target.value})} 
+          required 
+        />
+        <input 
+          type="email" 
+          placeholder="Email" 
+          value={newUser.email} 
+          onChange={(e) => setNewUser({...newUser, email: e.target.value})} 
+          required 
+        />
+        <button type="submit">Crear Usuario</button>
+      </form>
+      {}
+      
+      <p>Total de usuarios cargados: **{users.length}** registros.</p>
+
+      {}
+      <h2>Lista de Usuarios</h2>
+      <table>
+        <thead>
+          {}
+        </thead>
+        <tbody>
+          {users.map((user) => (
+            <tr key={user.id}>
+              <td>{user.id}</td>
+              <td>{user.name}</td>
+              <td>{user.email}</td>
+              <td>{user.is_active ? 'Activo' : 'Inactivo'}</td>
+              <td>
+                <button disabled>Editar/Estado</button>
+                <button disabled>Eliminar</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      {/* ----------------------------- */}
+
       <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
+        La funcionalidad de Creación (C) ha sido implementada.
       </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
