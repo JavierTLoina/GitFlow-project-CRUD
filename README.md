@@ -24,7 +24,7 @@ El proyecto se construyó a través de la integración de 5 Features principales
 4.  **Feature 4:** `feature/update-user-status` (Implementación de la función U - Actualizar)
 5.  **Feature 5:** `feature/delete-user-record` (Implementación de la función D - Borrar)
 
-6.  ## Cómo Ejecutar el Proyecto
+   ## Cómo Ejecutar el Proyecto
 
 Para clonar y correr el proyecto en tu máquina local, sigue estos pasos:
 
