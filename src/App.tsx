@@ -15,20 +15,26 @@ function App() {
 
   const handleAddUser = (e: React.FormEvent) => {
     e.preventDefault(); 
-
     if (!newUser.name.trim() || !newUser.email.trim()) {
         alert("Por favor, rellena todos los campos.");
         return;
     }
-
     const userToAdd: User = {
-      id: nextId++, 
+      id: nextId++,
       name: newUser.name.trim(),
       email: newUser.email.trim(),
-      is_active: true, 
+      is_active: true,
     };
     setUsers([...users, userToAdd]); 
     setNewUser({ name: '', email: '' }); 
+  };
+
+  const handleToggleStatus = (id: number) => {
+    setUsers(
+      users.map((user) => 
+        user.id === id ? { ...user, is_active: !user.is_active } : user
+      )
+    );
   };
 
   return (
@@ -54,15 +60,17 @@ function App() {
         />
         <button type="submit">Crear Usuario</button>
       </form>
-      {}
+      {/* ------------------------------------------- */}
       
       <p>Total de usuarios cargados: **{users.length}** registros.</p>
 
-      {}
+      {/* --- Lista de Usuarios (R) con Botón (U) --- */}
       <h2>Lista de Usuarios</h2>
       <table>
         <thead>
-          {}
+          <tr>
+            <th>ID</th><th>Nombre</th><th>Email</th><th>Estado</th><th>Acciones</th>
+          </tr>
         </thead>
         <tbody>
           {users.map((user) => (
@@ -72,7 +80,13 @@ function App() {
               <td>{user.email}</td>
               <td>{user.is_active ? 'Activo' : 'Inactivo'}</td>
               <td>
-                <button disabled>Editar/Estado</button>
+                {/* Botón de Actualización (U) */}
+                <button 
+                  onClick={() => handleToggleStatus(user.id)}
+                  title="Cambia el estado de activo a inactivo y viceversa"
+                >
+                  {user.is_active ? 'Desactivar' : 'Activar'}
+                </button>
                 <button disabled>Eliminar</button>
               </td>
             </tr>
@@ -82,7 +96,7 @@ function App() {
       {/* ----------------------------- */}
 
       <p className="read-the-docs">
-        La funcionalidad de Creación (C) ha sido implementada.
+        La funcionalidad de Actualización (U) del estado ha sido implementada.
       </p>
     </div>
   );
